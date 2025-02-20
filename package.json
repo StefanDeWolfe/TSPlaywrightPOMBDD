@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:e2e": "cucumber-js --require cucumber.conf.js --require tests-e2e/steps/*.ts --format @cucumber/pretty-formatter"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cucumber/cucumber": "^7.3.1",
+    "@cucumber/pretty-formatter": "^1.0.1",
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.4"
   },

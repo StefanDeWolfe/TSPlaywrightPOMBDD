@@ -3,6 +3,8 @@ This is an example of a Playwright test framework project
 
 # Example website
 https://www.saucedemo.com/
+https://youtu.be/bfWXNLqKlvA
+
 
 # Run test commands
 Some commands to run to see if its working
