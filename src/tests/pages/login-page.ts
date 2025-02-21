@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import BasePage  from "../pages/base-page";
-import {LOCKOUT_ERROR_MESSAGE} from "../fixtures/constants"
+import {LOCKOUT_ERROR_MESSAGE, BASE_URL} from "../fixtures/constants"
 
 export default class LoginPage extends BasePage {
   readonly txtUsername: Locator;
@@ -23,7 +23,8 @@ export default class LoginPage extends BasePage {
   }
 
   async goto() {
-    await this.page.goto(process.env.URL);
+    // @ts ignore
+    await this.page.goto(process.env.URL ?? BASE_URL);
   }
 
   async login(username: string, password: string, ) {

@@ -1,10 +1,11 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import BasePage  from "../pages/base-page";
+import { BASE_URL} from "../fixtures/constants"
 
-export class MyCartPage extends BasePage {
+export default class MyCartPage extends BasePage {
   readonly btnCheckout: Locator
   readonly spanPageTitle: Locator
-  readonly divItemQuantity: Locator
+  // readonly divItemQuantity: Locator
 
   constructor(page: Page) {
     super(page)
@@ -18,7 +19,7 @@ export class MyCartPage extends BasePage {
   }
 
   async goto() {
-    await this.page.goto(new URL(process.env.URL, '/cart.html').href);
+    await this.page.goto(new URL(process.env.URL ?? BASE_URL, '/cart.html').href);
   }
 
   async clickCheckout() {

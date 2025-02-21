@@ -7,4 +7,14 @@ export default class BasePage {
     constructor(page:Page) {
         this.page = page;
     }
+    async waitForLoadState() {
+        this.page.waitForLoadState()
+    }
+    async wait(){
+        await this.page.waitForLoadState(); // The promise resolves after 'load' event.
+        await this.page.waitForURL('**');
+    }
+    async verifyPageTitle() {
+    this.wait()
+    }
 }

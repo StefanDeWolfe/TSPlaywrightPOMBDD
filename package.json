@@ -4,20 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js test"
+    "test": "npx bddgen && npx playwright test",
+    "tagged-test": "npx bddgen && npx playwright test --grep ",
+    "not-tagged-test": "npx bddgen && npx playwright test --grep-invert ",
+    "report": "npx playwright show-report reports/cucumber",
+    "report:debug": "npx playwright show-report reports/playwright"
   },
-  "keywords": [],
+  "keywords": [
+    "cucumber",
+    "cucumber - TS",
+    "playwright-cucumber"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.4",
-    "@cucumber/cucumber": "^11.2.0",
     "dotenv": "^16.4.7",
     "playwright": "^1.50.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "playwright-bdd": "^8.2.0",
+    "winston": "^3.17.0"
   },
   "dependencies": {
+    "cucumber-html-reporter": "^7.2.0"
   }
 }

@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import BasePage  from "../pages/base-page";
-
+import { BASE_URL} from "../fixtures/constants"
 export default class ProductsPage extends BasePage {
   readonly btnAddItemToCart: (itemId:string) => Locator;
   readonly lnkShoppingCart:Locator;
@@ -22,7 +22,7 @@ export default class ProductsPage extends BasePage {
   }
 
   async goto() {
-    await this.page.goto(new URL(process.env.URL, '/inventory.html').href);
+    await this.page.goto(new URL(process.env.URL ?? BASE_URL, '/inventory.html').href);
   }
 
   async addItemToCart(itemId: string) {

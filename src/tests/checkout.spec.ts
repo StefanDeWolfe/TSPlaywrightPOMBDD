@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/login-page';
-import { ProductsPage } from '../pages/products-page';
-import { MyCartPage } from '../pages/my-cart-page';
-import { CheckoutPage } from '../pages/checkout-page';
-import { CheckoutPageHeaders } from '../fixtures/constants';
+import LoginPage from './pages/login-page';
+import ProductsPage from './pages/products-page';
+import MyCartPage from './pages/my-cart-page';
+import CheckoutPage from './pages/checkout-page';
+import { CheckoutPageHeaders } from './fixtures/constants';
 
 test.beforeEach(async ({ page }) => {
   const login = new LoginPage(page)

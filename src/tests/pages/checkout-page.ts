@@ -1,6 +1,7 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import { CheckoutPageHeaders } from '../fixtures/constants';
 import BasePage  from "../pages/base-page";
+import { BASE_URL} from "../fixtures/constants"
 export default class CheckoutPage extends BasePage {
   readonly btnContinue: Locator
   readonly btnFinish: Locator
@@ -23,7 +24,7 @@ export default class CheckoutPage extends BasePage {
 
   async goto() {
     // @ts-ignore
-    await this.page.goto(new URL(process.env.URL, '/checkout-step-one.html').href); 
+    await this.page.goto(new URL(process.env.URL ?? BASE_URL, '/checkout-step-one.html').href); 
     // https://www.saucedemo.com/checkout-step-two.html
     // https://www.saucedemo.com/checkout-complete.html
   }

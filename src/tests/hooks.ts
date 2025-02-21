@@ -1,16 +1,17 @@
 import { Browser, BrowserContext, Page, chromium, firefox, webkit,  } from '@playwright/test';
 import dotenv  from 'dotenv' 
 import { Status } from "@cucumber/cucumber"
-import LoginPage from '../pages/login-page';
-import { pageFixture } from './pageFixture';
+import LoginPage from './pages/login-page';
+import { MyFixture } from './fixtures/fixtures';
 // import { Context } from 'node:vm';
 
 const { Before, BeforeAll, AfterAll, After, setDefaultTimeout } = require("@cucumber/cucumber")
 setDefaultTimeout(60000)
 // launch the browser
-let browser: Browser;
-let bCtx: BrowserContext;
-let page:Page;
+let browser: Browser
+let bCtx: BrowserContext
+let page:Page
+
 BeforeAll(async function () {
       try {
          if (process.env.ENV) {
@@ -23,7 +24,7 @@ BeforeAll(async function () {
          console.error("Error in loading environment variables", error)
    }
 
-   let browserType = process.env.BROWSER;
+   let browserType = process.env.BROWSER ?? "chrome"
 
    switch (browserType) {
       case 'chrome':
@@ -46,27 +47,27 @@ BeforeAll(async function () {
  });
 
  // Create a new browser context and page per scenario
-Before(async function (scenario) {
+Before(async function () {
    // context = await global.browser.newContext()
    bCtx = await browser.newContext({viewport:null, javaScriptEnabled:true});
    page = await bCtx.newPage();
    pageFixture.page = page
-   this.log(`----------------------${scenario.pickle.name} is started----------------`)
+   // console.log(`----------------------${scenario.pickle.name} is started----------------`)
    const login = new LoginPage(page)
    await login.goto()
 
  });
  
  // Cleanup after each scenario
- After(async function (scenario) {
+ After(async function () {
    await pageFixture.page.close()
    await bCtx.close()
-   this.log(`----------------${scenario.pickle.name} is started--------------------`)
-   this.log(`SCENARIO STATUS IS >>>> ${scenario.result?.status} >>>>>`)
+   // console.log(`----------------${scenario.pickle.name} is started--------------------`)
+   // console.log(`SCENARIO STATUS IS >>>> ${scenario.result?.status} >>>>>`)
 
-   if(scenario.result?.status==Status.FAILED) {
-      this.log(`I am taking screenshot....!`)
-   }
+   // if(scenario.result?.status==Status.FAILED) {
+   //    console.log(`I am taking screenshot....!`)
+   // }
  });
  
  // close the browser
