@@ -1,23 +1,24 @@
 # PlaywrightExample
-This is an example of a Playwright test framework project
+This is an example of a Playwright BDD test framework project
 
 # Example website
 https://www.saucedemo.com/
-https://youtu.be/bfWXNLqKlvA
-
 
 # Run test commands
 Some commands to run to see if its working
 ```
-npx playwright test [test file]
-npx playwright test login.spec.ts --project firefox --headed
-npx playwright test -g "Login as a standard user"
-npx playwright test -g "Login as a standard user" --project firefox --headed
+npm test
 ```
 
 # How I set this up (for future me)
 ```
 npm init playwright@latest
+npm install playwright
+npm install @playwright/test
+npm install ts-node
+npm install @cucumber/cucumber
+npm install dotenv
+
 ```
 With selection options:
 -   Typescript
@@ -28,8 +29,10 @@ With selection options:
 Copy created project into repo
 Added "pages" folder for POM
 Visited "https://playwright.dev/docs/pom" for POM page example
+Visited "https://github.com/sselda/Playwright-Typescript-Cucumber-BDD/blob/main/tsconfig.json" as an example project
 
 
 # Login Test: login.spec.js
 Basic login tests.
 -   Login as a standard user
+-   Login as a locked out user
