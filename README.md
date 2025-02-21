@@ -19,7 +19,7 @@ To test the GUI, run the following commands:
 ```
 npm test
 pnpm test
-pnpm tagged-test "@login"
+pnpm tagged-test "@login-gui"
 ```
 
 To test the API, run the following commands (TBD):
