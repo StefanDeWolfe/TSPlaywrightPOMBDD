@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import BasePage  from "../pages/base-page";
-import { BASE_URL} from "../fixtures/constants"
+import { BASE_URL} from "../test-data/constants"
 
 export default class MyCartPage extends BasePage {
   readonly btnCheckout: Locator

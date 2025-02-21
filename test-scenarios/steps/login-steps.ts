@@ -1,4 +1,4 @@
-import { Given, Then, When } from '../fixtures/fixtures';
+import { Given, Then, When } from '../utils/fixtures';
 
 Given('The user navigates to the login page', async ({loginPage}) => {
     console.log('The user navigates to the login page')
@@ -11,12 +11,12 @@ Given('The user navigates to the login page', async ({loginPage}) => {
     
  });
  
- Then('The Login page is displayed', async ({loginPage}, webPage: string) => {
-    console.log(`The "${webPage}" page is displayed`)
+ Then('The Login page is displayed', async ({loginPage}) => {
+    console.log(`The Login page is displayed`)
     loginPage.verifyPageTitle()
  });
  
- Then('The "{string}" error is displayed', async function ({loginPage},errorMessage: string) {
+ Then('The {string} error is displayed', async ({loginPage},errorMessage: string) => {
     console.log(`The "${errorMessage}" error is displayed`)
     await loginPage.waitForLoadState() // The promise resolves after 'load' event.
     if (errorMessage.toLowerCase() == 'lockedout'){

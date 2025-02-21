@@ -2,8 +2,8 @@ import { defineConfig, devices } from '@playwright/test';
 import { cucumberReporter, defineBddConfig } from 'playwright-bdd';
 
 const testDir = defineBddConfig({
-    features: './src/tests/features/*.feature',
-    steps: [ './src/tests/steps/*.ts', './src/tests/fixtures/fixtures.ts' ]
+    features: ['./test-scenarios/features/**/*.feature', './test-scenarios/api/features/**/*.feature'],
+    steps: [ './test-scenarios/steps/*.ts', './test-scenarios/utils/fixtures.ts' ]
 });
 
 export default defineConfig({
@@ -24,26 +24,31 @@ export default defineConfig({
 
     // Reporter to use
     reporter: [
-        [ './src/tests/utils/CustomReporter.ts' ],
+        [ './test-scenarios/utils/CustomReporter.ts' ],
         [ 'html', { outputFolder: 'reports/playwright/' } ],
         cucumberReporter('html', { outputFile: 'reports/cucumber/index.html' }),
     ],
 
 
     use: {
+        // Capture screenshot when a test fails.
+        screenshot: 'on',
+        video: 'on',
+        // Collect trace when retrying the failed test.
+        trace: 'on-first-retry',
         // Run Headless
         headless: false,
-
         // Custom TestID 
         testIdAttribute: 'data-test',
         // Base URL to use in actions like `await page.goto('/')`.
         // baseURL: 'http://127.0.0.1:3000',
-
-        // Collect trace when retrying the failed test.
-        trace: 'on-first-retry',
-
-        // Capture screenshot when a test fails.
-        screenshot: 'only-on-failure'
+        extraHTTPHeaders: {
+            // We set this header per GitHub guidelines.
+            'Accept': 'application/vnd.github.v3+json',
+            // Add authorization token to all requests.
+            // Assuming personal access token available in the environment.
+            'Authorization': `token ${process.env.API_TOKEN}`,
+          },
     },
 
     // Configure projects for major browsers.

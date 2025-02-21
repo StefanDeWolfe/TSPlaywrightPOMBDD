@@ -1,7 +1,7 @@
 {
   "name": "TsPlaywrightPomBdd",
   "version": "1.0.0",
-  "description": "",
+  "description": "An example of a Playwright TS POM BDD Project",
   "main": "index.js",
   "scripts": {
     "test": "npx bddgen && npx playwright test",
@@ -10,11 +10,7 @@
     "report": "npx playwright show-report reports/cucumber",
     "report:debug": "npx playwright show-report reports/playwright"
   },
-  "keywords": [
-    "cucumber",
-    "cucumber - TS",
-    "playwright-cucumber"
-  ],
+  "keywords": ["playwright", "BDD", "POM"],
   "author": "Stefan DeWolfe",
   "license": "ISC",
   "devDependencies": {

@@ -1,7 +1,7 @@
 import { expect, type Locator, type Page } from '@playwright/test';
-import { CheckoutPageHeaders } from '../fixtures/constants';
+import { CheckoutPageHeaders } from '../test-data/constants';
 import BasePage  from "../pages/base-page";
-import { BASE_URL} from "../fixtures/constants"
+import { BASE_URL} from "../test-data/constants"
 export default class CheckoutPage extends BasePage {
   readonly btnContinue: Locator
   readonly btnFinish: Locator
