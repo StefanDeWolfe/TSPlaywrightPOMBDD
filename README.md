@@ -29,7 +29,7 @@ With selection options:
 Copy created project into repo
 Added "pages" folder for POM
 Visited "https://playwright.dev/docs/pom" for POM page example
-Visited "https://github.com/sselda/Playwright-Typescript-Cucumber-BDD/blob/main/tsconfig.json" as an example project
+Visited "https://github.com/apatelia/playwright-with-bdd/blob/main/step-definitions/login.steps.ts" as an example project
 
 
 # Login Test: login.spec.js
