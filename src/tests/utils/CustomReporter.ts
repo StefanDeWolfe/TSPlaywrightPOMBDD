@@ -3,7 +3,7 @@ import { LOGGER } from './Logger';
 
 export default class CustomReporter implements Reporter {
 
-    private numberOfTestsInSuite: number;
+    private numberOfTestsInSuite: number = 0;
 
     onBegin (config: FullConfig<{}, {}>, suite: Suite): void {
         this.numberOfTestsInSuite = suite.allTests().length;
