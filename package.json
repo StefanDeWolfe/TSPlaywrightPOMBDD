@@ -1,7 +1,7 @@
 {
   "name": "TsPlaywrightPomBdd",
   "version": "1.0.0",
-  "description": "An example of a Playwright TS POM BDD Project",
+  "description": "An example of a Playwright TS POM BDD Project with GUI and API testing",
   "main": "index.js",
   "scripts": {
     "test": "npx bddgen && npx playwright test",
@@ -10,13 +10,21 @@
     "report": "npx playwright show-report reports/cucumber",
     "report:debug": "npx playwright show-report reports/playwright"
   },
-  "keywords": ["playwright", "BDD", "POM"],
+  "keywords": [
+    "Playwright",
+    "typescript",
+    "BDD",
+    "POM",
+    "GUI",
+    "API"
+  ],
   "author": "Stefan DeWolfe",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.4",
     "dotenv": "^16.4.7",
+    "node-fetch": "^3.3.2",
     "playwright": "^1.50.1",
     "playwright-bdd": "^8.2.0",
     "winston": "^3.17.0"

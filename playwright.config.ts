@@ -2,8 +2,17 @@ import { defineConfig, devices } from '@playwright/test';
 import { cucumberReporter, defineBddConfig } from 'playwright-bdd';
 
 const testDir = defineBddConfig({
-    features: ['./test-scenarios/features/**/*.feature', './test-scenarios/api/features/**/*.feature'],
-    steps: [ './test-scenarios/steps/*.ts', './test-scenarios/utils/fixtures.ts' ]
+    features: [
+        './test-scenarios/features/**/*.feature', 
+        './test-scenarios/api/features/**/*.feature'
+    ],
+    steps: [ 
+        './test-scenarios/steps/*.ts', 
+        './test-scenarios/steps/**/*.ts', 
+        './test-scenarios/utils/fixtures.ts',
+        './test-scenarios/api/steps/*.ts', 
+        './test-scenarios/api/steps/**/*.ts', 
+    ]
 });
 
 export default defineConfig({

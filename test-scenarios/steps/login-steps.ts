@@ -1,27 +1,29 @@
 import { Given, Then, When } from '../utils/fixtures';
-
+import { LOGGER } from '../utils/Logger';
 Given('The user navigates to the login page', async ({loginPage}) => {
-    console.log('The user navigates to the login page')
-    await loginPage.goto()
+   LOGGER.info('The user navigates to the login page')
+   await loginPage.goto()
  });
  
- When('The user enters in {string} and {string}', async ({loginPage}, username: string, password: string) => {
-    console.log(`The user enters in "${username}" and "${password}"`)
-    await loginPage.login(username, password)
+ When('The user enters {string} and {string}', async ({loginPage}, username: string, password: string) => {
+   LOGGER.info(`The user enters "${username}" and "${password}"`)
+   await loginPage.login(username, password)
     
  });
  
  Then('The Login page is displayed', async ({loginPage}) => {
-    console.log(`The Login page is displayed`)
-    loginPage.verifyPageTitle()
+   LOGGER.info(`The Login page is displayed`)
+   loginPage.verifyPageTitle()
  });
  
- Then('The {string} error is displayed', async ({loginPage},errorMessage: string) => {
-    console.log(`The "${errorMessage}" error is displayed`)
-    await loginPage.waitForLoadState() // The promise resolves after 'load' event.
-    if (errorMessage.toLowerCase() == 'lockedout'){
-        await loginPage.expectLockout()
-    } else {
-        console.error(`Unrecognized error: "${errorMessage}"`)
-    }
+ Then('The {string} error is displayed', async ({loginPage}, errorMessage: string) => {
+   LOGGER.info(`The "${errorMessage}" error is displayed`)
+   await loginPage.wait() // The promise resolves after 'load' event.
+   if (errorMessage.toLowerCase() == 'lockedout'){
+      await loginPage.expectLockout()
+   } else if (errorMessage.toLowerCase() == 'badusernamepassword'){
+      await loginPage.expectBadUsernamePassword()
+   } else {
+      console.error(`Unrecognized error: "${errorMessage}"`)
+   }
  });

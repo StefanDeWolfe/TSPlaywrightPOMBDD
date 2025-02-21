@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import BasePage  from "../pages/base-page";
-import {LOCKOUT_ERROR_MESSAGE, BASE_URL} from "../test-data/constants"
+import {LOCKOUT_ERROR_MESSAGE, BASE_URL, BAD_USERNAME_PASSWORD_ERROR_MESSAGE} from "../test-data/constants"
 
 export default class LoginPage extends BasePage {
   readonly txtUsername: Locator;
@@ -34,8 +34,11 @@ export default class LoginPage extends BasePage {
   }
 
   async expectLockout() {
-    
     await expect(this.hdrError).toHaveText(LOCKOUT_ERROR_MESSAGE, {timeout: 3000});
+  }
+
+  async expectBadUsernamePassword() {
+    await expect(this.hdrError).toHaveText(BAD_USERNAME_PASSWORD_ERROR_MESSAGE, {timeout: 3000});
   }
 
   async verifyPageTitle() {

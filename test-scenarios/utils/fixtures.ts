@@ -4,13 +4,15 @@ import LoginPage from '../pages/login-page'
 import ProductsPage from '../pages/products-page'
 import CartPage from '../pages/my-cart-page'
 import CheckoutPage from '../pages/checkout-page'
+import LoginApiPage from '../api/pages/login-api-page'
 
 type MyFixtures = {
     basePage: BasePage,
     loginPage: LoginPage,
     productsPage: ProductsPage,
     checkoutPage: CheckoutPage,
-    cartPage: CartPage
+    cartPage: CartPage,
+    loginApiPage: LoginApiPage
 };
 
 export const test = base.extend<MyFixtures>({
@@ -19,6 +21,7 @@ export const test = base.extend<MyFixtures>({
     productsPage: async ({ page }, use) => use(new ProductsPage(page)),
     cartPage: async ({ page }, use) => use(new CartPage(page)),
     checkoutPage: async ({ page }, use) => use(new CheckoutPage(page)),
+    loginApiPage: async ({ page }, use) => use(new LoginApiPage(page)),
 });
 
 export const { Given, When, Then } = createBdd(test);
