@@ -5,6 +5,17 @@ This is an example of a Playwright BDD test framework project, tesitng both APIs
 https://www.saucedemo.com/ for GUI testing.
 https://reqres.in for API testing.
 
+# Reasons for doing things the way I did them.
+POM model is superior for maintainability. Plus it follows good coding practices for abstracting things out into their separate locations.
+Using testIds (aka "data-*" Ids) is superior to using xpaths because xpaths could change, but the test Id should be stable.
+Using .env files is a good way to hide sensitive data from your repo. Repos should NOT have sensitive information pushed to them.
+BDD was requested of me at work, so I experimented with it posted it here as a demo solution (no work code, just examples).
+API testing is a "must have" in most environments, so I include it here, with minimal extra libraries. Thanks for already having a context Playwright!
+According to Stack Overflow, you need to have all the processing of requests in the same file, otherwise the response will be disposed.
+If I can find a way to NOT do that, then I will refactor.
+Any generated file MUST go into the .gitignore because its standard practice to not commit generated files.
+
+
 # To setup this project for yourself.
 Clone or pull down the zip archive, and unzip it.
 Open the root directory in VS Code. Create a new terminal.
@@ -21,6 +32,7 @@ npm test
 pnpm test
 pnpm tagged-test "@login-gui"
 ```
+NPM, NPX, or PNPM, whatever you have.
 
 To test the API, run the following commands (TBD):
 ```
@@ -49,9 +61,11 @@ Visited "https://playwright.dev/docs/pom" for POM page example.
 Visited "https://github.com/apatelia/playwright-with-bdd/blob/main/step-definitions/login.steps.ts" as an example project for getting BDD functionality working right.
 
 
-# Login Test: login/login.feature
+# Login Test: login/login.feature made for sausedemo.com
 Basic login tests.
 -   Login as a standard user
 -   Login as a locked out user
 
-# API tests: 
+# API tests: login-api/login-api.feature  made for reqres.in user
+-   Login as a standard user via API
+-   Unable to Login missing the password field

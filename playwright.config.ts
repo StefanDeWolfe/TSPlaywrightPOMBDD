@@ -46,7 +46,7 @@ export default defineConfig({
         // Collect trace when retrying the failed test.
         trace: 'on-first-retry',
         // Run Headless
-        headless: false,
+        headless: true,
         // Custom TestID 
         testIdAttribute: 'data-test',
         // Base URL to use in actions like `await page.goto('/')`.
